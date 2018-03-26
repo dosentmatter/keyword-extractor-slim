@@ -3,6 +3,13 @@
 A simple [NPM package](https://npmjs.org/package/keyword-extractor) for extracting _keywords_ from a string by
 removing stopwords.
 
+This mirror shrinks down the codebase so the UMD bundle is smaller when generated. The smaller UMD bundle can be used if you
+have a size limit to your code. It removes support for all languages but English. Utilities have been cherry-picked from
+lodash and underscore.string instead of requiring the whole underscore and underscore.string packages, respectively.
+
+This package size can be further reduced by removing dependencies on lodash and underscore.string and writing project-specific
+methods, but that will not be done for now.
+
 ## Installation
 
 ```sh
@@ -36,7 +43,7 @@ var sentence = "President Obama woke up Monday facing a Congressional defeat tha
 
 //  Extract the keywords
 var extraction_result = keyword_extractor.extract(sentence,{
-                                                                language:"english",
+                                                                language:"english", // only "english" is supported
                                                                 remove_digits: true,
                                                                 return_changed_case:true,
                                                                 remove_duplicates: false
